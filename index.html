@@ -34,6 +34,25 @@
   }
   ::selection{background:var(--blue);color:var(--white);}
 
+  html{
+    scrollbar-width:thin;
+    scrollbar-color:var(--blue) var(--black);
+  }
+  ::-webkit-scrollbar{
+    width:12px;
+  }
+  ::-webkit-scrollbar-track{
+    background:var(--black);
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color:var(--divider-dark);
+    border-radius:980px;
+    border:3px solid var(--black);
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background-color:var(--blue);
+  }
+
   h1,h2{
     font-weight:600;
     letter-spacing:-0.015em;
