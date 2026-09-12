@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>If Apple Was Honest — iPhone 18 Pro</title>
+<style>
+  :root{
+    --black: #000000;
+    --near-black: #1d1d1f;
+    --grey-bg: #f5f5f7;
+    --white: #ffffff;
+    --ink: #1d1d1f;
+    --grey-text: #86868b;
+    --grey-text-dark: #a1a1a6;
+    --blue: #0071e3;
+    --blue-hover: #0077ed;
+    --divider-light: #d2d2d7;
+    --divider-dark: #424245;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--blue);color:var(--white);}
+
+  h1,h2{
+    font-weight:600;
+    letter-spacing:-0.015em;
+    line-height:1.07;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    background:var(--black);
+    padding:110px 22px 80px;
+  }
+  .hero-tag{
+    font-size:14px;
+    font-weight:600;
+    color:var(--grey-text-dark);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(40px, 7.5vw, 80px);
+    max-width:920px;
+  }
+  .hero h1 span{color:var(--blue);}
+  .hero-sub{
+    margin-top:20px;
+    font-size:19px;
+    font-weight:400;
+    color:var(--grey-text-dark);
+    max-width:460px;
+    letter-spacing:0;
+  }
+
+  .hero-video-wrap{
+    margin-top:48px;
+    width:min(1100px, 92vw);
+    height:min(62vh, 620px);
+    border-radius:18px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
+    animation:float 5s ease-in-out infinite;
+  }
+  .hero-video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    background:#1a1a1c;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  .mute-btn{
+    position:absolute;
+    bottom:14px;
+    right:14px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    color:var(--white);
+    padding:0;
+    transition:background .2s ease;
+  }
+  .mute-btn:hover{background:rgba(0,0,0,0.75);}
+  .mute-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+  .mute-btn svg{width:16px;height:16px;}
+  .mute-btn .icon-unmuted{display:none;}
+
+  .scroll-cue{
+    position:absolute;
+    bottom:32px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--grey-text);
+    letter-spacing:0.02em;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .scroll-cue .arrow{
+    animation:bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);opacity:0.6;}
+    50%{transform:translateY(6px);opacity:1;}
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.show{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- AUKAAT SECTION ---------- */
+  .aukaat{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 22px;
+    background:
+      radial-gradient(ellipse 60% 45% at 50% 50%, rgba(0,113,227,0.22), transparent 72%),
+      var(--near-black);
+  }
+  .aukaat h2{
+    font-size:clamp(40px, 8.5vw, 88px);
+    color:var(--white);
+  }
+  .price-line{
+    margin-top:26px;
+    font-size:21px;
+    font-weight:500;
+    color:var(--white);
+  }
+  .price-line del{color:var(--grey-text);margin-right:10px;font-weight:400;}
+  .aukaat p.note{
+    margin-top:16px;
+    color:var(--grey-text-dark);
+    font-size:15px;
+    max-width:420px;
+  }
+
+  /* ---------- WHITE SLIDES ---------- */
+  .slide{
+    min-height:80vh;
+    background:var(--grey-bg);
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 22px;
+  }
+  .slide .headline{
+    font-size:clamp(32px,6.5vw,60px);
+    max-width:620px;
+  }
+  .thin-bar{
+    width:min(560px,86vw);
+    height:14px;
+    border-radius:8px;
+    margin:44px 0 36px;
+    background:linear-gradient(180deg,#fff,#d6d6da 45%,#9a9a9f);
+    box-shadow:0 16px 36px rgba(0,0,0,0.1);
+  }
+  .honest-caption{
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .6s ease, transform .6s ease;
+    font-size:15px;
+    color:var(--grey-text);
+    max-width:380px;
+    border-top:1px solid var(--divider-light);
+    padding-top:16px;
+    margin-top:8px;
+  }
+  .honest-caption.show{opacity:1;transform:translateY(0);}
+  .stamp{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    color:var(--blue);
+    background:rgba(0,113,227,0.1);
+    border-radius:980px;
+    padding:5px 14px;
+    display:inline-block;
+    margin-bottom:16px;
+  }
+
+  /* ---------- ASLI INNOVATION ---------- */
+  .innovation{
+    min-height:90vh;
+    background:var(--black);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 22px;
+  }
+  .innovation h2{
+    font-size:clamp(36px,7.5vw,76px);
+  }
+  .innovation p{
+    margin-top:22px;
+    font-size:17px;
+    font-weight:400;
+    color:var(--grey-text-dark);
+    max-width:440px;
+  }
+  .camera-frame{
+    margin-top:52px;
+    width:min(280px,70vw);
+    aspect-ratio:1/1;
+    border-radius:50%;
+    border:1px solid var(--divider-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .camera-frame svg{
+    width:58%;
+    height:58%;
+    opacity:0.14;
+  }
+  .camera-hover-text{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    font-size:15px;
+    font-weight:500;
+    color:var(--white);
+    line-height:1.5;
+  }
+
+  /* ---------- SPEC SHEET ---------- */
+  .specs{
+    background:var(--grey-bg);
+    color:var(--ink);
+    padding:100px 22px;
+  }
+  .specs h2{
+    text-align:center;
+    font-size:clamp(30px,5.5vw,44px);
+    margin-bottom:52px;
+  }
+  table{
+    width:100%;
+    max-width:680px;
+    margin:0 auto;
+    border-collapse:collapse;
+  }
+  th{
+    text-align:left;
+    font-size:12px;
+    font-weight:600;
+    color:var(--grey-text);
+    padding:0 12px 14px;
+    border-bottom:1px solid var(--divider-light);
+  }
+  td{
+    padding:18px 12px;
+    border-bottom:1px solid var(--divider-light);
+    font-size:15px;
+    font-weight:400;
+    vertical-align:top;
+  }
+  td.feature{font-weight:600;}
+  td.translation{color:var(--blue);}
+  tr:last-child td{border-bottom:none;}
+
+  /* ---------- CTA / FOOTER ---------- */
+  .cta{
+    min-height:70vh;
+    background:var(--black);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 22px 60px;
+  }
+  .cta h2{
+    font-size:clamp(34px,6.5vw,60px);
+    max-width:600px;
+  }
+  .btn{
+    margin-top:36px;
+    background:var(--blue);
+    color:var(--white);
+    border:none;
+    font-family:inherit;
+    font-weight:500;
+    font-size:17px;
+    padding:12px 28px;
+    border-radius:980px;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .btn:hover{background:var(--blue-hover);}
+  .btn:focus-visible{outline:2px solid var(--white);outline-offset:3px;}
+  .toast{
+    margin-top:20px;
+    font-size:14px;
+    color:var(--grey-text);
+    min-height:20px;
+  }
+
+  footer{
+    text-align:center;
+    padding:36px 22px 56px;
+    font-size:12px;
+    color:var(--grey-text);
+    border-top:1px solid var(--divider-dark);
+  }
+  footer a{color:var(--blue);text-decoration:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-video-wrap{animation:none;}
+    .honest-caption{transition:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+    .scroll-cue .arrow{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-tag">A launch script that leaked, apparently</div>
+    <h1>If Apple Was <span>Honest</span></h1>
+    <p class="hero-sub">iPhone 18 Pro. Same keynote. Same music. Slightly more truth than usual.</p>
+    <div class="hero-video-wrap">
+      <video class="hero-video" id="heroVideo" src="Video.mp4" autoplay loop muted playsinline></video>
+      <button class="mute-btn" id="muteBtn" type="button" aria-pressed="true" aria-label="Unmute video">
+        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="4 9 8 9 12 5 12 19 8 15 4 15 4 9"></polygon>
+          <line x1="17" y1="9" x2="22" y2="14"></line>
+          <line x1="22" y1="9" x2="17" y2="14"></line>
+        </svg>
+        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="4 9 8 9 12 5 12 19 8 15 4 15 4 9"></polygon>
+          <path d="M16 8a5 5 0 0 1 0 8"></path>
+          <path d="M18.5 5.5a9 9 0 0 1 0 13"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="scroll-cue">
+      <span>SCROLL TO SEE THE HONEST VERSION</span>
+      <span class="arrow">↓</span>
+    </div>
+  </section>
+
+  <section class="aukaat">
+    <h2 class="reveal">Aukaat se Bahar</h2>
+    <div class="price-line reveal"><del>₹1,49,900</del>₹1,79,900</div>
+    <p class="note reveal">Starting price. Storage upgrade sold separately. Dignity upgrade not available.</p>
+  </section>
+
+  <section class="slide" data-caption>
+    <div class="stamp reveal">Honest label</div>
+    <h2 class="headline reveal">Thinnest iPhone ever</h2>
+    <div class="thin-bar reveal"></div>
+    <p class="honest-caption">Also the thinnest excuse to remove the charger. Again.</p>
+  </section>
+
+  <section class="innovation">
+    <h2 class="reveal">Asli Innovation</h2>
+    <p class="reveal">A camera so advanced, it can zoom into your bank balance and still find nothing there.</p>
+    <div class="camera-frame reveal">
+      <svg viewBox="-100 -100 200 200" aria-hidden="true">
+        <circle cx="0" cy="0" r="90" fill="var(--blue)"/>
+        <g stroke="var(--black)" stroke-width="9" stroke-linecap="round">
+          <line x1="10" y1="0" x2="52.7" y2="62.8"/>
+          <line x1="10" y1="0" x2="52.7" y2="62.8" transform="rotate(60)"/>
+          <line x1="10" y1="0" x2="52.7" y2="62.8" transform="rotate(120)"/>
+          <line x1="10" y1="0" x2="52.7" y2="62.8" transform="rotate(180)"/>
+          <line x1="10" y1="0" x2="52.7" y2="62.8" transform="rotate(240)"/>
+          <line x1="10" y1="0" x2="52.7" y2="62.8" transform="rotate(300)"/>
+        </g>
+      </svg>
+      <p class="camera-hover-text">48MP<br>of pure<br>marketing</p>
+    </div>
+  </section>
+
+  <section class="slide" data-caption>
+    <div class="stamp reveal">Honest label</div>
+    <h2 class="headline reveal">Built with aerospace-grade titanium</h2>
+    <div class="thin-bar reveal" style="background:linear-gradient(180deg,#eef3fb,#a9c6ea 45%,#5f8fc4);"></div>
+    <p class="honest-caption">Scratches exactly like the aluminum one. Costs a plane ticket more.</p>
+  </section>
+
+  <section class="specs">
+    <h2 class="reveal">The honest spec sheet</h2>
+    <table class="reveal">
+      <thead>
+        <tr><th>Apple says</th><th>What it means</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="feature">Aerospace-grade titanium</td><td class="translation">Scratches like everything else. Costs more to scratch.</td></tr>
+        <tr><td class="feature">All-new A20 Pro chip</td><td class="translation">Opens Instagram 0.2 seconds faster than last year.</td></tr>
+        <tr><td class="feature">No charger in the box</td><td class="translation">Buy it separately for ₹4,900. Every year.</td></tr>
+        <tr><td class="feature">Asli Innovation™ camera</td><td class="translation">Same three lenses. New marketing deck.</td></tr>
+        <tr><td class="feature">Starts at ₹1,79,900</td><td class="translation">Aukaat se bahar.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="cta">
+    <h2 class="reveal">Pre-book your aukaat</h2>
+    <button class="btn reveal" id="preorderBtn">Reserve Now</button>
+    <div class="toast" id="toast"></div>
+  </section>
+
+  <footer>
+    Not affiliated with Apple.
+  </footer>
+
+<script>
+  // Hero video mute toggle
+  const heroVideo = document.getElementById('heroVideo');
+  const muteBtn = document.getElementById('muteBtn');
+  const iconMuted = muteBtn.querySelector('.icon-muted');
+  const iconUnmuted = muteBtn.querySelector('.icon-unmuted');
+
+  function updateMuteIcon(){
+    const isMuted = heroVideo.muted;
+    iconMuted.style.display = isMuted ? 'block' : 'none';
+    iconUnmuted.style.display = isMuted ? 'none' : 'block';
+    muteBtn.setAttribute('aria-pressed', String(isMuted));
+    muteBtn.setAttribute('aria-label', isMuted ? 'Unmute video' : 'Mute video');
+  }
+  muteBtn.addEventListener('click', () => {
+    heroVideo.muted = !heroVideo.muted;
+    updateMuteIcon();
+  });
+  updateMuteIcon();
+
+  // Reveal honest captions on scroll, one orchestrated moment per slide
+  const captions = document.querySelectorAll('.honest-caption');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.5});
+  captions.forEach(c=>io.observe(c));
+
+  // Fade-up reveal for headlines, copy, and key elements as they scroll into view
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        revealIo.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  revealEls.forEach((el,i)=>{
+    el.style.transitionDelay = `${(i % 4) * 90}ms`;
+    revealIo.observe(el);
+  });
+
+  // CTA joke interaction
+  const btn = document.getElementById('preorderBtn');
+  const toast = document.getElementById('toast');
+
+  const loadingSteps = [
+    "Doing online research",
+    "Loading Steve Jobs' soul",
+    "Questioning your life choices",
+    "Consulting your bank statement",
+    "Calculating EMI trauma"
+  ];
+
+  const results = [
+    "Aukaat check failed. Try again next salary.",
+    "EMI calculator crying in the background.",
+    "Added to cart. Cart questioning your life choices.",
+    "Order placed. Kidney donation pending confirmation.",
+    "Payment declined. Even the bank laughed.",
+    "Reservation confirmed. Regret shipping separately.",
+    "Your UPI just sent a resignation letter.",
+    "Congratulations, you now owe more than rent.",
+    "Loan approved. So is your family's disappointment.",
+    "Checkout complete. Please remove one kidney to continue."
+  ];
+
+  const delay = (ms) => new Promise(r => setTimeout(r, ms));
+  let resultIndex = 0;
+  let running = false;
+  let firstRun = true;
+
+  // Cycles a base label through ".", "..", "..." at an uneven,
+  // slightly-stalling pace so it reads like a real loading state
+  // rather than a metronome.
+  function runStep(label, duration) {
+    return new Promise(resolve => {
+      let dots = 0;
+      toast.textContent = label;
+      const tick = () => {
+        dots = (dots % 3) + 1;
+        toast.textContent = label + '.'.repeat(dots);
+        const jitter = 280 + Math.random() * 380;
+        timeoutId = setTimeout(tick, jitter);
+      };
+      let timeoutId = setTimeout(tick, 300);
+      setTimeout(() => {
+        clearTimeout(timeoutId);
+        resolve();
+      }, duration);
+    });
+  }
+
+  btn.addEventListener('click', async () => {
+    if (running) return;
+    running = true;
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'not-allowed';
+
+    if (firstRun) {
+      for (const step of loadingSteps) {
+        const duration = 1400 + Math.random() * 900;
+        await runStep(step, duration);
+      }
+      toast.textContent = 'Done ✓';
+      await delay(900);
+      firstRun = false;
+    }
+
+    toast.textContent = results[resultIndex % results.length];
+    resultIndex++;
+
+    btn.disabled = false;
+    btn.style.opacity = '';
+    btn.style.cursor = '';
+    running = false;
+  });
+</script>
+</body>
+</html>
