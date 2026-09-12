@@ -99,7 +99,6 @@
     position:relative;
     overflow:hidden;
     box-shadow:0 30px 70px rgba(0,0,0,0.5);
-    animation:float 5s ease-in-out infinite;
   }
   .hero-video{
     width:100%;
@@ -107,10 +106,6 @@
     object-fit:cover;
     display:block;
     background:#1a1a1c;
-  }
-  @keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
   }
   .mute-btn{
     position:absolute;
@@ -378,7 +373,6 @@
   footer a{color:var(--blue);text-decoration:none;}
 
   @media (prefers-reduced-motion: reduce){
-    .hero-video-wrap{animation:none;}
     .honest-caption{transition:none;}
     .reveal{transition:none;opacity:1;transform:none;}
     .scroll-cue .arrow{animation:none;}
